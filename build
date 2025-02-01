@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dir=$(dirname $0)
+src="$dir/add-copy-buttons.js"
+dst="$dir/bookmarklet.txt"
+
+printf 'javascript:' >"$dst"
+cat "$src" | sed -E -e 's/^ +//g' -e 's/ /%20/g' | tr -d '\n' >>"$dst"
+
+exit
